@@ -1,0 +1,39 @@
+title AddNewNote
+note left of browser:
+user enters the note example: "Somya" in form 
+and clicks on submit button.
+Http Request is created with body as object 
+which contains the note and date
+end note
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note right of server: 
+server reads the payload from request object 
+sent by browser add add it to notes object.
+end note
+server->browser: returns HTTP response with 302 code and location header with value /exampleapp/notes
+note left of browser:
+browser reads that it is a redirect response
+so reads the location header and makes a get request
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: html-code
+note left of browser:
+browser starts loading web page,
+observes main.css and main.js links
+so makes get requests to get those pages
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: main.js
+note left of browser:
+browser starts executing the js code and 
+requests server for json data
+end note
+browser->server: HTTP https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: returns array of notes objects [...{"content":"Somya","date":"2021-09-02T21:30:19.257Z"}]
+note left of browser:
+browser execute the event handler
+that renders notes to display 
+new note added will also be displayed
+end note

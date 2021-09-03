@@ -1,0 +1,26 @@
+title AddNewNoteSPA
+
+note left of browser:
+user enters the note example: "Somya" in form 
+and clicks on submit button.
+A object created which contains the note and date.
+end note 
+
+note left of browser:
+A post call and rerender call are made in browser.
+In rerender, callback method associated with event handler is executed
+in that method data object gets updated as below
+data = [...data,{"content":"Somya","date":"2021-09-02T21:30:19.257Z"}]
+A post call made to server to update its notes object
+end note
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note right of server: 
+server reads the payload from request object 
+sent by browser add add it to notes object.
+end note
+server->browser: returns HTTP response with 201 code
+
+note left of browser:
+browser by now should be updated with new note
+irrespective of post call
+end note
