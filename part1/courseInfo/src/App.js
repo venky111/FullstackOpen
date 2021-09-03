@@ -1,18 +1,20 @@
 import React from 'react';
 
 const App = () => {
-  const course = 'Half Stack application development';
-  const content = [
-    { id: 0, part: 'Fundamentals of React', noOfExercises: 10 },
-    { id: 1, part: 'Using props to pass data', noOfExercises: 7 },
-    { id: 2, part: 'State of a component', noOfExercises: 14 },
-  ];
+  const content = {
+    course: 'Half Stack application development',
+    parts: [
+      { id: 0, part: 'Fundamentals of React', noOfExercises: 10 },
+      { id: 1, part: 'Using props to pass data', noOfExercises: 7 },
+      { id: 2, part: 'State of a component', noOfExercises: 14 },
+    ],
+  };
 
   return (
     <div>
-      <Header name={course} />
-      <Content content={content} />
-      <Total content={content} />
+      <Header name={content.course} />
+      <Content content={content.parts} />
+      <Total content={content.parts} />
     </div>
   );
 };
