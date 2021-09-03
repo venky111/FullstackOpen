@@ -2,24 +2,17 @@ import React from 'react';
 
 const App = () => {
   const course = 'Half Stack application development';
-  const part1 = 'Fundamentals of React';
-  const exercises1 = 10;
-  const part2 = 'Using props to pass data';
-  const exercises2 = 7;
-  const part3 = 'State of a component';
-  const exercises3 = 14;
-  const exercises = { exercises1, exercises2, exercises3 };
   const content = [
-    { id: 0, part: part1, noOfExercises: exercises1 },
-    { id: 1, part: part2, noOfExercises: exercises2 },
-    { id: 2, part: part3, noOfExercises: exercises3 },
+    { id: 0, part: 'Fundamentals of React', noOfExercises: 10 },
+    { id: 1, part: 'Using props to pass data', noOfExercises: 7 },
+    { id: 2, part: 'State of a component', noOfExercises: 14 },
   ];
 
   return (
     <div>
       <Header name={course} />
       <Content content={content} />
-      <Total {...exercises} />
+      <Total content={content} />
     </div>
   );
 };
@@ -44,8 +37,13 @@ const Content = (props) => {
 };
 
 const Total = (props) => {
-  const { exercises1, exercises2, exercises3 } = props;
-  return <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>;
+  const { content } = props;
+  const noOfExercisesArray = content.map((part) => part.noOfExercises);
+  const sum = noOfExercisesArray.reduce(
+    (current, previous) => current + previous,
+    0
+  );
+  return <p>Number of exercises {sum}</p>;
 };
 
 export default App;
